@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 10px; }
+        label { display: inline-block; width: 120px; }
+        input[type="text"], input[type="email"], input[type="number"] { width: 200px; }
+        .total { margin-top: 20px; font-weight: bold; }
+    </style>
+    <script>
+        function calculateTotal() {
+            const adultCount = parseInt(document.getElementById("adults").value) || 0;
+            const kidsCount = parseInt(document.getElementById("kids").value) || 0;
+            const studentsCount = parseInt(document.getElementById("students").value) || 0;
+            
+            const totalAmount = (adultCount * 25) + (kidsCount * 10) + (studentsCount * 15);
+            document.getElementById("total").innerText = "Total Amount: €" + totalAmount;
+        }
+    </script>
+</head>
+<body>
+    <h1>Event Registration Form</h1>
+    <form oninput="calculateTotal()">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile No:</label>
+            <input type="text" id="mobile" required>
+        </div>
+        <div class="form-group">
+            <label for="adults">Number of Adults:</label>
+            <input type="number" id="adults" min="0" value="0">
+        </div>
+        <div class="form-group">
+            <label for="kids">Number of Kids:</label>
+            <input type="number" id="kids" min="0" value="0">
+        </div>
+        <div class="form-group">
+            <label for="students">Students:</label>
+            <input type="number" id="students" min="0" value="0">
+        </div>
+        <div class="total" id="total">Total Amount: €0</div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
